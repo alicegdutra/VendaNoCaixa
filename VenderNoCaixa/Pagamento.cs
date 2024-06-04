@@ -5,32 +5,22 @@ using System.Threading.Tasks;
 
 namespace VenderNoCaixa
 {
-    public class Pagamento
+    public abstract class Pagamento
     {
-       protected int data { get; set; }
+        protected int Data { get; set; }
+        protected double Total { get; set; }
 
-       private double total { get; set; }
-
-       public Pagamento()
-        {            
-        }
         public Pagamento(int data, double total)
         {
             Data = data;
             Total = total;
         }
+
         public virtual void Mostrar()
         {
-            Console.WriteLine("Data: " + data + "\tTotal: " + total);
+            Console.WriteLine("Data: " + Data + "\tTotal: " + Total);
         }
-        public int Data{
-            get { return data;}
-            set { data = value;}
-        }
-        public double Total{
-            get { return total;}
-            set { total = value;}
-        } 
-        
+
+        public abstract void ProcessarPagamento();
     }
 }

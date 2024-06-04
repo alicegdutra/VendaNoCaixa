@@ -3,65 +3,133 @@
 List<Produto> produtos = new List<Produto>();
 List<Venda> vendas = new List<Venda>();
 
-
-
 int opcao = 0;
 while (opcao != 7)
 {
-    System.Console.WriteLine(("Menu:"));
-    System.Console.WriteLine("1 - Cadastrar Produto:");
-    System.Console.WriteLine("2 - Registrar Venda");
-    System.Console.WriteLine("3 - Consultar Venda");
-    System.Console.WriteLine("4 - Forma de Pagamento (Cartão)");
-    System.Console.WriteLine("5 - Forma de Pagamento (Cheque)");
-    System.Console.WriteLine("6 - Forma de Pagamento (Espécie)");
-    System.Console.WriteLine("7 - Sair\nDigite a opção: ");
-    opcao = Convert.ToInt32(Console.ReadLine());
-}
-
-int op = 0;
-while (op != 4)
-{
-    Console.WriteLine("Menu Produtos e Vendas:");
-    Console.WriteLine("1 - Cadastrar Produto");
-    Console.WriteLine("2 - Registrar Venda");
+    Console.WriteLine("Menu:");
+    Console.WriteLine("1 - Cadastrar Produto:");
+    Console.WriteLine("2 - Mostrar Produtos");
     Console.WriteLine("3 - Consultar Venda");
-    Console.WriteLine("4 - Sair\nDigite a opção: ");
-    op = Convert.ToInt32(Console.ReadLine());
-    if op = 1{
-        // Lógica para cadastrar um produto
+    Console.WriteLine("4 - Forma de Pagamento (Cartão)");
+    Console.WriteLine("5 - Forma de Pagamento (Cheque)");
+    Console.WriteLine("6 - Forma de Pagamento (Espécie)");
+    Console.WriteLine("7 - Sair\nDigite a opção: ");
+    opcao = Convert.ToInt32(Console.ReadLine());
+
+    if (opcao == 1)
+    {
+        CadastrarProduto(produtos);
     }
-    if op = 2{
-        // Lógica para registrar uma venda
+    else if (opcao == 2)
+    {
+        MostrarProdutos(produtos);
     }
-    if op = 3{
-        // Lógica para consultar uma venda
+    else if (opcao == 3)
+    {
+        ConsultarVenda(vendas);
     }
-    if op = 4{
+    else if (opcao == 4)
+    {
+        PagamentoCartao();
+    }
+    else if (opcao == 5)
+    {
+        PagamentoCheque();
+    }
+    else if (opcao == 6)
+    {
+        PagamentoEspecie();
+    }
+    else if (opcao == 7)
+    {
         Console.WriteLine("Saindo...");
     }
 }
 
-int opcao = 0;
-while (opcao != 4)
+static void CadastrarProduto(List<Produto> produtos)
 {
-    Console.WriteLine("Menu Formas de Pagamento:");
-    Console.WriteLine("1 - Pagamento em Cartão");
-    Console.WriteLine("2 - Pagamento em Cheque");
-    Console.WriteLine("3 - Pagamento em Espécie");
-    Console.WriteLine("4 - Sair\nDigite a opção: ");
-    opcao = Convert.ToInt32(Console.ReadLine());
-    if op = 1{
-        // Lógica para pagamento no cartão
-    }
-    if op = 2{
-        // Lógica para pagamento em cheque
-    }
-    if op = 3{
-        // Lógica para pagamento em espécie
-    }
-    if op = 4{
-        Console.WriteLine("Saindo...");
-    }
+    Console.WriteLine("Digite o código do produto:");
+    int codigo = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Digite o nome do produto:");
+    string nome = Console.ReadLine();
+    Console.WriteLine("Digite a quantidade em estoque:");
+    int estoque = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Digite o preço do produto:");
+    double preco = Convert.ToDouble(Console.ReadLine());
 
+    Produto produto = new Produto(codigo, nome, estoque, preco);
+    produtos.Add(produto);
+
+    Console.WriteLine("Produto cadastrado com sucesso!");
+}
+
+static void MostrarProdutos(List<Produto> produtos)
+{
+    Console.WriteLine("Lista de Produtos:");
+    foreach (Produto produto in produtos)
+    {
+        Console.WriteLine($"Código: {produto.Codigo}, Nome: {produto.Nome}, Estoque: {produto.Estoque}, Preço: {produto.Preco}");
+    }
+}
+
+static void ConsultarVenda(List<Venda> vendas)
+{
+    Console.WriteLine("Digite o dia da venda para consulta:");
+    int dataConsulta = Convert.ToInt32(Console.ReadLine());
+    Venda vendaConsulta = vendas.Find(v => v.Data == dataConsulta);
+
+    if (vendaConsulta != null)
+    {
+        vendaConsulta.Mostrar();
+    }
+    else
+    {
+        Console.WriteLine("Venda não encontrada!");
+    }
+}
+
+static void PagamentoCartao()
+{
+    Console.WriteLine("Digite o dia do pagamento:");
+    int dataCartao = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Digite o valor do pagamento:");
+    double valorCartao = Convert.ToDouble(Console.ReadLine());
+    Console.WriteLine("Digite os dados da transação:");
+    string dadosTransacao = Console.ReadLine();
+    Console.WriteLine("Digite o resultado da transação:");
+    int resultadoTransacao = Convert.ToInt32(Console.ReadLine());
+
+    Cartao cartao = new Cartao(dataCartao, valorCartao, dadosTransacao, resultadoTransacao);
+    cartao.Mostrar();
+}
+
+static void PagamentoCheque()
+{
+    Console.WriteLine("Digite a data do pagamento:");
+    int dataCheque = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Digite o valor do pagamento:");
+    double valorCheque = Convert.ToDouble(Console.ReadLine());
+    Console.WriteLine("Digite o número do cheque:");
+    long numeroCheque = Convert.ToInt64(Console.ReadLine());
+    Console.WriteLine("Digite a data de depósito:");
+    int dataDeposito = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Digite a situação do cheque:");
+    int situacaoCheque = Convert.ToInt32(Console.ReadLine());
+
+    Cheque cheque = new Cheque(dataCheque, valorCheque, numeroCheque, dataDeposito, situacaoCheque);
+    cheque.Mostrar();
+}
+
+static void PagamentoEspecie()
+{
+    Console.WriteLine("Digite a data do pagamento:");
+    int dataEspecie = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Digite o valor do pagamento:");
+    double valorEspecie = Convert.ToDouble(Console.ReadLine());
+    Console.WriteLine("Digite a quantia recebida:");
+    double quantiaRecebida = Convert.ToDouble(Console.ReadLine());
+    double troco = quantiaRecebida - valorEspecie;
+
+    Especie especie = new Especie(dataEspecie, valorEspecie, quantiaRecebida, troco);
+    especie.Mostrar();
 }

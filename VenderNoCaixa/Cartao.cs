@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +7,10 @@ namespace VenderNoCaixa
 {
     public class Cartao : Pagamento
     {
-        private string dadosTransacao { get; set; }
-        private int resultadoTransacao { get; set; }
+        private string DadosTransacao { get; set; }
+        private int ResultadoTransacao { get; set; }
 
-        public Cartao() : base()
-        {         }
-
-        public Cartao (int data, double total, string dadosTransacao, int resultadoTransacao) : base (data, total)
+        public Cartao(int data, double total, string dadosTransacao, int resultadoTransacao) : base(data, total)
         {
             DadosTransacao = dadosTransacao;
             ResultadoTransacao = resultadoTransacao;
@@ -23,20 +19,12 @@ namespace VenderNoCaixa
         public override void Mostrar()
         {
             base.Mostrar();
-            Console.WriteLine("Data de Transacao: " + DadosTransacao + "\tResultado da Transacao: " +  ResultadoTransacao);
+            Console.WriteLine("Dados da Transacao: " + DadosTransacao + "\tResultado da Transacao: " +  ResultadoTransacao);
         }
 
-        public string DadosTransacao
+        public override void ProcessarPagamento()
         {
-            get { return dadosTransacao; }
-            set { dadosTransacao = value; }
+            Console.WriteLine($"Pagamento com cartão processado. Dados da transação: {DadosTransacao}, Resultado: {ResultadoTransacao}");
         }
-
-        public int ResultadoTransacao
-        {
-            get { return resultadoTransacao; }
-            set { resultadoTransacao = value; }
-        }
-
     }
 }

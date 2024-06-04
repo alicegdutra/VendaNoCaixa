@@ -7,11 +7,10 @@ namespace VenderNoCaixa
 {
     public class Especie : Pagamento
     {
-        private double quantia { get; set; }
+        private double Quantia { get; set; }
+        private double Troco { get; set; }
 
-        private double troco { get; set; }
-
-        public Especie (int data, double total, double quantia, double troco) : base (data, total)
+        public Especie(int data, double total, double quantia, double troco) : base(data, total)
         {
             Quantia = quantia;
             Troco = troco;
@@ -20,21 +19,12 @@ namespace VenderNoCaixa
         public override void Mostrar()
         {
             base.Mostrar();
-            Console.WriteLine("Qauntia: " + quantia + "\tTroco: " +  troco);
+            Console.WriteLine("Quantia: " + Quantia + "\tTroco: " + Troco);
         }
 
-        public double Quantia
+        public override void ProcessarPagamento()
         {
-            get { return quantia; }
-            set { quantia = value; }
-        }
-
-        public double Troco
-        {
-            get { return troco; }
-            set { troco = value; }
+            Console.WriteLine($"Pagamento em espécie processado. Valor: {Total}, Quantia recebida: {Quantia}, Troco: {Troco}");
         }
     }
-
-    
 }

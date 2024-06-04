@@ -7,48 +7,30 @@ namespace VenderNoCaixa
 {
     public class Venda
     {
-        private int Data { get; set; }
-        private double Total { get; set; }
+        public int Data { get; set; }
+        public double Total { get; set; }
+        public List<ItemVenda> Itens { get; set; }
 
-        public List<ItemVenda> Itens {get; set;}
-
-        public Venda(int data, double total)
+        public Venda(int data)
         {
             Data = data;
-            Total = total;
+            Total = 0;
+            Itens = new List<ItemVenda>();
         }
-        public void Mostrar()
-            {
-                Console.WriteLine("Data: " + Data + "\tTotal: " + Total);
-            }
 
         public void AdicionarItem(ItemVenda item)
         {
-
             Itens.Add(item);
-        }
-        public void ItemVenda()
-        {
-            Console.WriteLine("\nListagem dos itens de venda: " + Total);
-            foreach (ItemVenda v in Itens)
-                v.Mostrar();
+            Total += item.Subtotal;
         }
 
-        public double total
+        public void Mostrar()
         {
-            get{return Total;}
-            set{Total = value;}
+            Console.WriteLine("Data: " + Data + "\tTotal: " + Total);
+            foreach (ItemVenda item in Itens)
+            {
+                item.Mostrar();
+            }
         }
-
-        public int data
-        {
-            get{return Data;}
-            set{Data = value;}
-        }
-        public int CalcularTotalItens()
-        {
-            Console.WriteLine(Itens.Count);
-            return Itens.Count;
-        }
-}
+    }
 }

@@ -1,0 +1,15 @@
+C:\VendaNoCaixa\VenderNoCaixa\obj\Debug\net6.0\VenderNoCaixa.csproj.AssemblyReference.cache
+C:\VendaNoCaixa\VenderNoCaixa\obj\Debug\net6.0\VenderNoCaixa.GeneratedMSBuildEditorConfig.editorconfig
+C:\VendaNoCaixa\VenderNoCaixa\obj\Debug\net6.0\VenderNoCaixa.AssemblyInfoInputs.cache
+C:\VendaNoCaixa\VenderNoCaixa\obj\Debug\net6.0\VenderNoCaixa.AssemblyInfo.cs
+C:\VendaNoCaixa\VenderNoCaixa\obj\Debug\net6.0\VenderNoCaixa.csproj.CoreCompileInputs.cache
+C:\VendaNoCaixa\VenderNoCaixa\bin\Debug\net6.0\VenderNoCaixa.exe
+C:\VendaNoCaixa\VenderNoCaixa\bin\Debug\net6.0\VenderNoCaixa.deps.json
+C:\VendaNoCaixa\VenderNoCaixa\bin\Debug\net6.0\VenderNoCaixa.runtimeconfig.json
+C:\VendaNoCaixa\VenderNoCaixa\bin\Debug\net6.0\VenderNoCaixa.dll
+C:\VendaNoCaixa\VenderNoCaixa\bin\Debug\net6.0\VenderNoCaixa.pdb
+C:\VendaNoCaixa\VenderNoCaixa\obj\Debug\net6.0\VenderNoCaixa.dll
+C:\VendaNoCaixa\VenderNoCaixa\obj\Debug\net6.0\refint\VenderNoCaixa.dll
+C:\VendaNoCaixa\VenderNoCaixa\obj\Debug\net6.0\VenderNoCaixa.pdb
+C:\VendaNoCaixa\VenderNoCaixa\obj\Debug\net6.0\VenderNoCaixa.genruntimeconfig.cache
+C:\VendaNoCaixa\VenderNoCaixa\obj\Debug\net6.0\ref\VenderNoCaixa.dll

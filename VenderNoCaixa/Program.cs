@@ -7,7 +7,7 @@ int opcao = 0;
 while (opcao != 7)
 {
     Console.WriteLine("Menu:");
-    Console.WriteLine("1 - Cadastrar Produto:");
+    Console.WriteLine("1 - Cadastrar Produto");
     Console.WriteLine("2 - Mostrar Produtos");
     Console.WriteLine("3 - Consultar Venda");
     Console.WriteLine("4 - Forma de Pagamento (Cartão)");
@@ -94,6 +94,10 @@ static void PagamentoCartao()
     int dataCartao = Convert.ToInt32(Console.ReadLine());
     Console.WriteLine("Digite o valor do pagamento:");
     double valorCartao = Convert.ToDouble(Console.ReadLine());
+    Console.WriteLine("Digite a quantidade de produtos:");
+    int quantidadeProdutos = Convert.ToInt32(Console.ReadLine());
+    valorCartao = AplicarDesconto(valorCartao, quantidadeProdutos);
+
     Console.WriteLine("Digite os dados da transação:");
     string dadosTransacao = Console.ReadLine();
     Console.WriteLine("Digite o resultado da transação:");
@@ -109,6 +113,10 @@ static void PagamentoCheque()
     int dataCheque = Convert.ToInt32(Console.ReadLine());
     Console.WriteLine("Digite o valor do pagamento:");
     double valorCheque = Convert.ToDouble(Console.ReadLine());
+    Console.WriteLine("Digite a quantidade de produtos:");
+    int quantidadeProdutos = Convert.ToInt32(Console.ReadLine());
+    valorCheque = AplicarDesconto(valorCheque, quantidadeProdutos);
+
     Console.WriteLine("Digite o número do cheque:");
     long numeroCheque = Convert.ToInt64(Console.ReadLine());
     Console.WriteLine("Digite a data de depósito:");
@@ -126,10 +134,24 @@ static void PagamentoEspecie()
     int dataEspecie = Convert.ToInt32(Console.ReadLine());
     Console.WriteLine("Digite o valor do pagamento:");
     double valorEspecie = Convert.ToDouble(Console.ReadLine());
+    Console.WriteLine("Digite a quantidade de produtos:");
+    int quantidadeProdutos = Convert.ToInt32(Console.ReadLine());
+    valorEspecie = AplicarDesconto(valorEspecie, quantidadeProdutos);
+
     Console.WriteLine("Digite a quantia recebida:");
     double quantiaRecebida = Convert.ToDouble(Console.ReadLine());
     double troco = quantiaRecebida - valorEspecie;
 
     Especie especie = new Especie(dataEspecie, valorEspecie, quantiaRecebida, troco);
     especie.Mostrar();
+}
+
+static double AplicarDesconto(double valor, int quantidadeProdutos)
+{
+    if (quantidadeProdutos > 50)
+    {
+        Console.WriteLine("Aplicando desconto de 20% para compra de mais de 50 produtos.");
+        valor *= 0.8;
+    }
+    return valor;
 }
